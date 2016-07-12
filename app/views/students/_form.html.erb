@@ -1,0 +1,17 @@
+<%= simple_form_for(@student) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :first_name %>
+    <%= f.input :last_name %>
+    <%= f.input :birth_date %>
+    <% if current_user.role_id == 1 %>
+      <%= f.input :status, collection: ['oui', 'non'] %>
+    <% end %>
+    <%= f.association :classroom %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
